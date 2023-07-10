@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 
 public class DbConnector {
 
-	public static void getConnection() throws Exception {
+	public static Connection getConnection() throws Exception {
 		String user ="user01";
 		String password="user01";
 		String url="jdbc:oracle:thin:@43.200.173.68:1521:xe";
@@ -21,7 +21,7 @@ public class DbConnector {
 		//reference type인 con이기 때문에 위의 명령어로 주소를 받아오면 성공했다고 볼 수 있음
 		System.out.println(con);
 		
-		
+		return con;
 		
 	}
 }
