@@ -9,4 +9,7 @@ public class BankBookDAO {
 		System.out.println("DB에 Insert");
 	}
 
+	public void bankBookDelete() {
+		System.out.println("DB Delete");
+	}
 }
