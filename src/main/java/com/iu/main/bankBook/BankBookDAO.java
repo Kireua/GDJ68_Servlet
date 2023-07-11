@@ -40,9 +40,6 @@ public class BankBookDAO {
 		
 
 		st.setLong(1, bankBookDTO.getBookNum());
-
-	public void bankBookDelete() {
-		System.out.println("DB Delete");
 		ResultSet rs = st.executeQuery();
 		
 		//한 줄 읽기
