@@ -31,7 +31,9 @@ public class StringMain {
 //		stringStudy.s1();
 //		stringStudy.s2();
 //		stringStudy.s3();
-		stringStudy.ex2();
+		stringStudy.s3();
+//		stringStudy.ex2();
+		
 
 	}
 
