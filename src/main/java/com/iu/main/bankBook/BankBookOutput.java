@@ -1,5 +1,7 @@
 package com.iu.main.bankBook;
 
+import java.util.ArrayList;
+
 public class BankBookOutput {
 	
 	public void view(BankBookDTO bankBookDTO) {
@@ -13,4 +15,10 @@ public class BankBookOutput {
 		System.out.println("=========="+str+"==========");
 	}
 
+	public void view(ArrayList<BankBookDTO> ar) {
+		for(int i=0; i<ar.size(); i++) {
+			this.view(ar.get(i));
+		}
+		
+	}
 }

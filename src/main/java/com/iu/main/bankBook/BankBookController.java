@@ -1,5 +1,6 @@
 package com.iu.main.bankBook;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -20,7 +21,7 @@ public class BankBookController {
 		
 	
 		while(s) {
-			System.out.println("1. 생성  2.삭제  3. 조회 4. 프로그램 종료");
+			System.out.println("1. 생성  2.삭제  3. 1개 조회 4. 제품 전체조회 5.제품 서치 6. 프로그램 종료");
 			int num = sc.nextInt();
 			
 			if(num==1) {
@@ -49,8 +50,17 @@ public class BankBookController {
 					bankBookOutput.view("해당 상품은 존재하지 않습니다");
 				}
 			}else if(num==4) {
+				ArrayList<BankBookDTO> ar = bankBookDAO.bankBooklist();
+				bankBookOutput.view(ar);
+			}else if(num==5) {
+				System.out.println("조회할 이름 입력");
+				String ss = sc.next();
+				ArrayList<BankBookDTO> ar = bankBookDAO.bankBookSearch(ss);
+				bankBookOutput.view(ar);
+			}else if(num==6) {
 				System.out.println("프로그램이 종료됩니다.");
 				break;
+				
 			}
 		}
 				

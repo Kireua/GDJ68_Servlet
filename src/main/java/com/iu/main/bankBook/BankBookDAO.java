@@ -3,10 +3,68 @@ package com.iu.main.bankBook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.iu.main.utill.DbConnector;
 
 public class BankBookDAO {
+	
+	//상품 N개 조회
+	public ArrayList<BankBookDTO> bankBookSearch(String s) throws Exception{
+		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
+		Connection con = DbConnector.getConnection();
+		
+		String sql = "SELECT * FROM BANKBOOK WHERE BOOKNAME LIKE ? ORDER BY BOOKNUM DESC";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, "%"+s+"%");
+		
+		ResultSet rs = st.executeQuery();
+		
+		while(rs.next()) {
+			BankBookDTO bankBookDTO = new BankBookDTO();
+			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
+			bankBookDTO.setBookName(rs.getString("BOOKNAME"));
+			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
+			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
+			ar.add(bankBookDTO);
+		}
+		if(ar.size()==0) {
+			System.out.println("찾는 데이터가 없습니다.");
+		}
+
+		
+		DbConnector.disConnect(rs, st, con);
+		return ar;
+	}
+	
+	//상품 N개 조회
+	public ArrayList<BankBookDTO> bankBooklist() throws Exception{
+		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
+		
+		//1. DB 연결
+		Connection con = DbConnector.getConnection();
+		//2. query문
+		String sql = "SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		//5. 최종 전송 및 결과 처리
+		ResultSet rs = st.executeQuery();
+		
+		while(rs.next()) {
+			BankBookDTO bankBookDTO = new BankBookDTO();
+			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
+			bankBookDTO.setBookName(rs.getString("BOOKNAME"));
+			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
+			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
+			ar.add(bankBookDTO);
+		}
+		
+		DbConnector.disConnect(rs, st, con);
+		return ar;
+	}
 	
 	//insert
 	//bankBookAdd
@@ -27,6 +85,8 @@ public class BankBookDAO {
 		st.setInt(3, bankBookDTO.getBookSale());
 		//5. 최종 전송 및 결과 처리
 		int result = st.executeUpdate();
+		
+		DbConnector.disConnect(st, con);
 		return result;
 		
 	}
@@ -51,7 +111,7 @@ public class BankBookDAO {
 		}else {
 			bankBookDTO=null;
 		}
-		
+		DbConnector.disConnect(rs, st, con);
 		return bankBookDTO;
 	}
 
@@ -69,6 +129,7 @@ public class BankBookDAO {
 		
 		System.out.println("Db Delete");
 		
+		DbConnector.disConnect(st, con);
 		return result;
 	}
 }

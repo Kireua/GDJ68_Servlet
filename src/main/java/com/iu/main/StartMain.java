@@ -1,9 +1,12 @@
 package com.iu.main;
 
+import java.util.ArrayList;
+
 import com.iu.main.bankBook.BankBookController;
 import com.iu.main.bankBook.BankBookDAO;
 import com.iu.main.bankBook.BankBookDTO;
 import com.iu.main.bankBook.BankBookInput;
+import com.iu.main.bankBook.BankBookOutput;
 import com.iu.main.utill.DbConnector;
 
 public class StartMain {
@@ -17,7 +20,12 @@ public class StartMain {
 			BankBookController bankBookController = new BankBookController();
 			
 			bankBookController.controller();
-			
+//			
+//			BankBookOutput bankBookOutput = new BankBookOutput();
+//			
+//			BankBookDAO bankBookDAO = new BankBookDAO();
+//			ArrayList<BankBookDTO> ar = bankBookDAO.bankBookSearch("주");
+//			bankBookOutput.view(ar);
 			
 			
 //			System.out.println(bankBookDTO.getBookName()+","+bankBookDTO.getBookNum()+","+bankBookDTO.getBookRate()+","+bankBookDTO.getBookSale());
