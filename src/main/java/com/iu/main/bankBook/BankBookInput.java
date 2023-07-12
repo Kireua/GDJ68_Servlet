@@ -39,6 +39,12 @@ public class BankBookInput {
 		
 		return bankBookDTO;
 	}
+	
+	public String bankBookSearch() {
+		System.out.println("조회할 이름 입력");
+		String ss = sc.next();
+		return ss;
+	}
 
 
 }

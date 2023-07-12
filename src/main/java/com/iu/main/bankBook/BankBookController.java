@@ -53,8 +53,7 @@ public class BankBookController {
 				ArrayList<BankBookDTO> ar = bankBookDAO.bankBooklist();
 				bankBookOutput.view(ar);
 			}else if(num==5) {
-				System.out.println("조회할 이름 입력");
-				String ss = sc.next();
+				String ss = bankBookInput.bankBookSearch();
 				ArrayList<BankBookDTO> ar = bankBookDAO.bankBookSearch(ss);
 				bankBookOutput.view(ar);
 			}else if(num==6) {
