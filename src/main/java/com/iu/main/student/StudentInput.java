@@ -22,9 +22,9 @@ public class StudentInput {
 		studentDTO.setEnglish(sc.nextInt());
 		System.out.println("수학 성적을 입력하세요");
 		studentDTO.setMath(sc.nextInt());
-		studentDTO.setTotal(studentDTO.getEnglish()+studentDTO.getKorean()+studentDTO.getMath());
-		studentDTO.setAvg(studentDTO.getTotal()/3);
-
+//		studentDTO.setTotal(studentDTO.getEnglish()+studentDTO.getKorean()+studentDTO.getMath());
+//		studentDTO.setAvg(studentDTO.getTotal()/3);
+		studentDTO.cal();
 		
 		return studentDTO;
 	}

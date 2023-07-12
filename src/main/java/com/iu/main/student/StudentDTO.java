@@ -78,5 +78,10 @@ public class StudentDTO {
 	
 	private double avg;
 	
+	public void cal() {
+		this.total = this.korean+this.english+this.math;
+		this.avg = this.total/3;
+				
+	}
 
 }

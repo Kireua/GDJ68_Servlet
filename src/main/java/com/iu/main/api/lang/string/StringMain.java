@@ -26,7 +26,13 @@ public class StringMain {
 //		System.out.println(name==name3);
 //		
 //		System.out.println(name.equals(name3));
-		
+		Scanner sc = new Scanner(System.in);
+		Scanner sc1 = new Scanner(System.in);
+		System.out.println("파일명 입력");
+		String ff = sc.next();
+		System.out.println(ff);
+		String ff1 = sc1.next();
+		System.out.println(ff1);
 		StringStudy stringStudy = new StringStudy();
 //		stringStudy.s1();
 //		stringStudy.s2();
